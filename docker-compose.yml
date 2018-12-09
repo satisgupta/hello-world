@@ -1,0 +1,27 @@
+version: '3'
+services:
+  webserver:
+    image: apache
+    build: ./
+    container_name: apache_web    
+    restart: always
+    ports:
+      - "8080:80"
+    links:
+      - mysql
+    volumes:
+      - ./webapp:/var/www/html    
+  mysql:
+    image: mysql:5.7
+    container_name: pimcore_mysql
+    restart: always
+    ports:
+      - "3307:3306"    
+    environment:
+      MYSQL_ROOT_PASSWORD: 'root@docker'
+      MYSQL_USER: 'root'
+      MYSQL_PASS: 'root'
+    volumes:
+      - data:/var/lib/mysql
+volumes:
+  data:
