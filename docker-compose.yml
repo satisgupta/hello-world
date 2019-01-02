@@ -10,18 +10,16 @@ services:
     links:
       - mysql
     volumes:
-      - ./webapp:/var/www/html    
+      - ./webapp:/var/www/html
   mysql:
     image: mysql:5.7
     container_name: pimcore_mysql
     restart: always
     ports:
       - "3307:3306"    
-    environment:
+    environment:    
       MYSQL_ROOT_PASSWORD: 'root@docker'
       MYSQL_USER: 'root'
       MYSQL_PASS: 'root'
     volumes:
-      - data:/var/lib/mysql
-volumes:
-  data:
+      - ./data:/var/lib/mysql

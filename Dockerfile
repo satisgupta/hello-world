@@ -8,6 +8,9 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -yq --no-install-recommends \
     apt-utils \
     curl \
+    git \
+    composer \
+    vim \
     # Install apache
     apache2 \
     # Install php 7.2
@@ -33,7 +36,10 @@ RUN locale-gen en_US.UTF-8 en_GB.UTF-8 de_DE.UTF-8 es_ES.UTF-8 fr_FR.UTF-8 it_IT
 RUN a2enmod rewrite expires
 
 # Configure PHP
-ADD php.ini /etc/php/7.2/apache2/conf.d/
+ADD config/php.ini /etc/php/7.2/apache2/conf.d/
+
+# Create Virtual host
+COPY config/000-default.conf /etc/apache2/sites-available/000-default.conf
 
 # Copy web direcotry and setup work directory
 COPY webapp /var/www/html
