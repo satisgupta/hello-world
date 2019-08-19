@@ -41,10 +41,13 @@ ADD config/php.ini /etc/php/7.2/apache2/conf.d/
 # Create Virtual host
 COPY config/000-default.conf /etc/apache2/sites-available/000-default.conf
 
+WORKDIR /var/www/html
+
 # Copy web direcotry and setup work directory
 COPY webapp /var/www/html
 
-WORKDIR /var/www/html
+RUN chown -R www-data:www-data /var/www/html
+RUN chmod -R 775 /var/www/html
 
 CMD ["apachectl", "-D", "FOREGROUND"]
 EXPOSE 80

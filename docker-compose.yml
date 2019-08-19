@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 services:
   webserver:
     image: apache
@@ -11,6 +11,10 @@ services:
       - mysql
     volumes:
       - ./webapp:/var/www/html
+      - app-vendor:/var/www/html/vendor
+      - app-cache:/var/www/html/var/cache
+      - app-session:/var/www/html/var/session
+      
   mysql:
     image: mysql:5.7
     container_name: pimcore_mysql
@@ -23,3 +27,7 @@ services:
       MYSQL_PASS: 'root'
     volumes:
       - ./data:/var/lib/mysql
+volumes:
+  app-vendor:
+  app-cache:
+  app-session:
