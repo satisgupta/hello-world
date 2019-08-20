@@ -10,7 +10,7 @@ services:
     links:
       - mysql
     volumes:
-      - ./webapp:/var/www/html
+      - ./pimcore:/var/www/html
       - app-vendor:/var/www/html/vendor
       - app-cache:/var/www/html/var/cache
       - app-sessions:/var/www/html/var/sessions

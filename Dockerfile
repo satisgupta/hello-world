@@ -46,8 +46,11 @@ COPY config/000-default.conf /etc/apache2/sites-available/000-default.conf
 WORKDIR /var/www/html
 COPY pimcore /var/www/html
 
-RUN chown -R www-data:www-data /var/www/html
-RUN chmod -R 775 /var/www/html
+# Run Composer Install
+RUN COMPOSER_MEMORY_LIMIT=-1 composer install
+
+RUN chown -Rf www-data:www-data /var/www/html
+RUN chmod -Rf 775 /var/www/html
 
 CMD ["apachectl", "-D", "FOREGROUND"]
 EXPOSE 80
