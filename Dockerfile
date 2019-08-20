@@ -44,7 +44,7 @@ COPY config/000-default.conf /etc/apache2/sites-available/000-default.conf
 
 # Copy web direcotry and setup work directory
 WORKDIR /var/www/html
-COPY webapp /var/www/html
+COPY pimcore /var/www/html
 
 RUN chown -R www-data:www-data /var/www/html
 RUN chmod -R 775 /var/www/html
