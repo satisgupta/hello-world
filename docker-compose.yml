@@ -13,8 +13,9 @@ services:
       - ./webapp:/var/www/html
       - app-vendor:/var/www/html/vendor
       - app-cache:/var/www/html/var/cache
-      - app-session:/var/www/html/var/session
-      
+      - app-sessions:/var/www/html/var/sessions
+      - app-versions:/var/www/html/var/versions
+      - app-logs:/var/www/html/var/logs
   mysql:
     image: mysql:5.7
     container_name: pimcore_mysql
@@ -30,4 +31,6 @@ services:
 volumes:
   app-vendor:
   app-cache:
-  app-session:
+  app-sessions:
+  app-versions:
+  app-logs:
