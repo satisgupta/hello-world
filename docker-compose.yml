@@ -3,7 +3,7 @@ services:
   webserver:
     image: apache
     build: ./
-    container_name: apache_web    
+    container_name: pimcore_web    
     restart: always
     ports:
       - "8080:80"
