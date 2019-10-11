@@ -1,12 +1,11 @@
 version: "3"
 services:
   webserver:
-    image: apache
     build: ./
     container_name: pimcore_web    
     restart: always
     ports:
-      - "8080:80"
+      - "8082:80"
     links:
       - mysql
     volumes:
@@ -21,14 +20,15 @@ services:
     container_name: pimcore_mysql
     restart: always
     ports:
-      - "3307:3306"    
+      - "3308:3306"    
     environment:    
       MYSQL_ROOT_PASSWORD: 'root@docker'
       MYSQL_USER: 'root'
       MYSQL_PASS: 'root'
     volumes:
-      - ./data:/var/lib/mysql
+      - app-data:/var/lib/mysql
 volumes:
+  app-data:
   app-vendor:
   app-cache:
   app-sessions:

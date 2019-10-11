@@ -27,6 +27,8 @@ RUN apt-get update && apt-get install -yq --no-install-recommends \
     php7.2-zip \
     php7.2-intl \
     php7.2-imagick \
+    php7.2-common \
+    php7.2-bz2 \
     locales \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
     
@@ -49,8 +51,8 @@ COPY pimcore /var/www/html
 # Run Composer Install
 RUN COMPOSER_MEMORY_LIMIT=-1 composer install
 
-RUN chown -Rf www-data:www-data /var/www/html
-RUN chmod -Rf 775 /var/www/html
+RUN chown -R www-data:www-data /var/www/html
+RUN chmod -R 775 /var/www/html
 
 CMD ["apachectl", "-D", "FOREGROUND"]
 EXPOSE 80
