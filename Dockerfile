@@ -49,7 +49,7 @@ WORKDIR /var/www/html
 COPY pimcore /var/www/html
 
 # Run Composer Install
-RUN COMPOSER_MEMORY_LIMIT=-1 composer install
+#RUN COMPOSER_MEMORY_LIMIT=-1 composer install
 
 RUN chown -R www-data:www-data /var/www/html
 RUN chmod -R 775 /var/www/html
