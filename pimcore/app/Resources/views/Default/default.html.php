@@ -106,21 +106,21 @@
         <hr />
     </div>
 
-    <?php if($this->editmode) { ?>
+    <?php //if($this->editmode) { ?>
         <div class="buttons">
             <a target="_blank" href="https://www.pimcore.com/docs/5.0.0/Getting_Started/Installation.html">Install Sample Data / Boilerplate</a>
             <a target="_blank" href="https://www.pimcore.com/docs/5.0.0/Getting_Started/index.html">Getting Started</a>
         </div>
 
         <div class="info">
-            <h2>Where can I edit some pages?</h2>
+            <h2><?= $this->input("myHeadline"); ?></h2>
             <p>
                 Well, it seems that you're using the professional distribution of pimcore which doesn't include any
                 templates / themes or contents, it's designed to start a project from scratch. If you need a jump start
                 please consider using our sample data / boilerplate package which includes everything you need to get started.
             </p>
         </div>
-    <?php } ?>
+    <?php //} ?>
 </div>
 
 </body>

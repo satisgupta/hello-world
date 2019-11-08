@@ -2,8 +2,7 @@ version: "3"
 services:
   webserver:
     build: ./
-    container_name: pimcore_web    
-    restart: always
+    container_name: pimcore_web
     ports:
       - "8082:80"
     depends_on:
@@ -19,7 +18,6 @@ services:
   mysql:
     image: mysql:5.7
     container_name: pimcore_mysql
-    restart: always
     ports:
       - "3308:3306"    
     environment:    

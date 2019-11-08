@@ -5,9 +5,14 @@ namespace AppBundle\Controller;
 use Pimcore\Controller\FrontendController;
 use Symfony\Component\HttpFoundation\Request;
 
-class DefaultController extends FrontendController
-{
-    public function defaultAction(Request $request)
-    {
+class DefaultController extends FrontendController {
+
+    public function defaultAction(Request $request) {
+        
     }
+
+    public function newsAction(Request $request) {
+        
+    }
+
 }
