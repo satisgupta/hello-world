@@ -10,10 +10,6 @@ services:
       - redis
     volumes:
       - ./:/var/www/html:cached
-      - app-cache:/var/www/html/var/cache
-      - app-sessions:/var/www/html/var/sessions
-      - app-versions:/var/www/html/var/versions
-      - app-logs:/var/www/html/var/logs
   mysql:
     image: mysql:5.7
     container_name: pimcore_mysql
@@ -32,7 +28,3 @@ services:
       - "6380:6379"
 volumes:
   app-data:
-  app-cache:
-  app-sessions:
-  app-versions:
-  app-logs:
