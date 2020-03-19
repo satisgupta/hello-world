@@ -39,14 +39,14 @@ RUN locale-gen en_US.UTF-8 en_GB.UTF-8 de_DE.UTF-8 es_ES.UTF-8 fr_FR.UTF-8 it_IT
 RUN a2enmod rewrite expires
 
 # Configure PHP
-ADD config/php.ini /etc/php/7.2/apache2/conf.d/
+ADD lamp-config/php.ini /etc/php/7.2/apache2/conf.d/
 
 # Create Virtual host
-COPY config/000-default.conf /etc/apache2/sites-available/000-default.conf
+COPY lamp-config/000-default.conf /etc/apache2/sites-available/000-default.conf
 
 # Copy web direcotry and setup work directory
 WORKDIR /var/www/html
-COPY pimcore /var/www/html
+COPY . /var/www/html
 
 # Run Composer Install
 #RUN COMPOSER_MEMORY_LIMIT=-1 composer install

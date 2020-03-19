@@ -4,13 +4,12 @@ services:
     build: ./
     container_name: pimcore_web
     ports:
-      - "8082:80"
+      - "8081:80"
     depends_on:
       - mysql
       - redis
     volumes:
-      - ./pimcore:/var/www/html
-      - app-vendor:/var/www/html/vendor
+      - ./:/var/www/html:cached
       - app-cache:/var/www/html/var/cache
       - app-sessions:/var/www/html/var/sessions
       - app-versions:/var/www/html/var/versions
@@ -19,9 +18,9 @@ services:
     image: mysql:5.7
     container_name: pimcore_mysql
     ports:
-      - "3308:3306"    
+      - "3307:3306"    
     environment:    
-      MYSQL_ROOT_PASSWORD: 'root@docker'
+      MYSQL_ROOT_PASSWORD: 'root'
       MYSQL_USER: 'root'
       MYSQL_PASS: 'root'
     volumes:
@@ -33,7 +32,6 @@ services:
       - "6380:6379"
 volumes:
   app-data:
-  app-vendor:
   app-cache:
   app-sessions:
   app-versions:
